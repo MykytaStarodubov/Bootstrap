@@ -1,9 +1,17 @@
 package ua.foxminded.bootstrap.dao;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import ua.foxminded.bootstrap.model.Class;
+import java.util.List;
+import java.util.Optional;
 
-@Repository
-public interface ClassRepository extends JpaRepository<Class, Integer> {
-	
+public interface ClassRepository {
+    Optional<Class> findById(int id);
+
+    List<Class> findAll();
+
+    void create(Class claSS);
+
+    void update(Class claSS);
+
+    void deleteById(int id);
 }

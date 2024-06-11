@@ -1,31 +1,75 @@
 package ua.foxminded.bootstrap.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
+
+@Entity
+@Table(name = "users")
 public class User {
-	private int userId;
-	private int userRoleId;
-	private String userName;
-	private String userEmail;
-	private String userDob;
-	private String userAddress;
 
-	public User(int userId, int userRoleId, String userName, String userEmail, String userDob, String userAddress) {
-		this.userId = userId;
-		this.userRoleId = userRoleId;
-		this.userName = userName;
-		this.userEmail = userEmail;
-		this.userDob = userDob;
-		this.userAddress = userAddress;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
+    private int userId;
 
-	public void addUser() {
-	}
+    @Column(name = "username", nullable = false)
+    private String username;
 
-	public void editUser() {
-	}
+    @Column(name = "password", nullable = false)
+    private String password;
 
-	public void deleteUser() {
-	}
+    @ManyToOne
+    @JoinColumn(name = "role_id", nullable = false)
+    private Role role;
 
-	public void searchUser() {
-	}
+    public User() {}
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    public User(String username, String password, Role role) {
+        this.username = username;
+        this.password = password;
+        this.role = role;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 }

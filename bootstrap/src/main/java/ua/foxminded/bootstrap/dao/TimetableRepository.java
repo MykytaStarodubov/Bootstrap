@@ -1,10 +1,17 @@
 package ua.foxminded.bootstrap.dao;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import ua.foxminded.bootstrap.model.Timetable;
+import java.util.List;
+import java.util.Optional;
 
-@Repository
-public interface TimetableRepository extends JpaRepository<Timetable, Integer> {
-	
+public interface TimetableRepository {
+    Optional<Timetable> findById(int id);
+
+    List<Timetable> findAll();
+
+    void create(Timetable timetable);
+
+    void update(Timetable timetable);
+
+    void deleteById(int id);
 }
-

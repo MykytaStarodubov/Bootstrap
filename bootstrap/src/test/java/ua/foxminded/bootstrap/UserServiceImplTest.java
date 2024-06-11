@@ -1,0 +1,68 @@
+package ua.foxminded.bootstrap;
+
+import ua.foxminded.bootstrap.dao.UserRepository;
+import ua.foxminded.bootstrap.model.User;
+import ua.foxminded.bootstrap.service.UserServiceImpl;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+
+@ExtendWith(MockitoExtension.class)
+public class UserServiceImplTest {
+
+    @Mock
+    private UserRepository userRepository;
+
+    @InjectMocks
+    private UserServiceImpl userService;
+
+    @Test
+    public void findUserById_shouldThrowException_whenUserNotFound() {
+        when(userRepository.findById(1)).thenReturn(Optional.empty());
+
+        assertThrows(UserServiceImpl.UserNotFoundException.class, () -> {
+            userService.findUserById(1);
+        });
+    }
+    @Test
+    public void createUser_shouldSaveUser() {
+    
+        User newUser = new User("John Doe", "john@example.com");
+
+       
+        userService.createUser(newUser);
+
+        verify(userRepository).create(newUser);
+    }
+
+    @Test
+    public void updateUser_shouldUpdateExistingUser() {
+    
+        User user = new User("Isabella Doe", "isa@example.com");
+
+       
+        userService.updateUser(user);
+
+     
+        verify(userRepository).update(user);
+    }
+
+    @Test
+    public void deleteUserById_shouldDeleteUser() {
+      
+        int idToDelete = 1;
+
+    
+        userService.deleteUserById(idToDelete);
+
+  
+        verify(userRepository).deleteById(idToDelete);
+    }
+}

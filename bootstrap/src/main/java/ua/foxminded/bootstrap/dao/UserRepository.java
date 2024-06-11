@@ -1,10 +1,17 @@
 package ua.foxminded.bootstrap.dao;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import ua.foxminded.bootstrap.model.User;
+import java.util.List;
+import java.util.Optional;
 
-@Repository
-public interface UserRepository extends JpaRepository<User, Integer> {
-	
+public interface UserRepository {
+    Optional<User> findById(int id);
+
+    List<User> findAll();
+
+    void create(User user);
+
+    void update(User user);
+
+    void deleteById(int id);
 }
-

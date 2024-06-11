@@ -1,45 +1,57 @@
 package ua.foxminded.bootstrap.model;
 
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import java.util.Set;
 
 @Entity
 @Table(name = "roles")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Role {
-	private int roleId;
-	private String roleTitle;
-	private String roleDescription;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "role_id")
-	private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "role_id")
+    private int roleId;
 
-	@Column(name = "role_title")
-	private String title;
+    @Column(name = "name", nullable = false)
+    private String name;
+   
+    @OneToMany(mappedBy = "role")
+    private Set<User> users;
 
-	@Column(name = "role_description")
-	private String description;
+ 
+    public Role() {}
 
-	public Role(int roleId, String roleTitle, String roleDescription) {
-		this.roleId = roleId;
-		this.roleTitle = roleTitle;
-		this.roleDescription = roleDescription;
-	}
+    public Role(String name) {
+        this.name = name;
+    }
 
-	public void addRole() {
-	}
+    public int getRoleId() {
+        return roleId;
+    }
 
-	public void editRole() {
-	}
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
+    }
 
-	public void deleteRole() {
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void searchRole() {
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
 }

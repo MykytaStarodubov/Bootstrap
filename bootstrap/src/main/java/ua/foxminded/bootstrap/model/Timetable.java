@@ -1,10 +1,28 @@
 package ua.foxminded.bootstrap.model;
 
+import jakarta.persistence.*;
+import java.util.Set;
+
+@Entity
+@Table(name = "timetables")
 public class Timetable {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "timetable_id")
 	private int timetableId;
+
+	@Column(name = "timetable_description")
 	private String timetableDescription;
+
+	@Column(name = "timetable_type")
 	private String timetableType;
+
+	@Column(name = "timetable_name")
 	private String timetableName;
+
+	@OneToMany(mappedBy = "timetable")
+	private Set<Class> classes;
 
 	public Timetable(int timetableId, String timetableDescription, String timetableType, String timetableName) {
 		this.timetableId = timetableId;
