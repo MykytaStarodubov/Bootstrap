@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>University Schedule</title>
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="#">University Schedule</a>
+		<div class="collapse navbar-collapse">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/roles}">Roles</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/users}">Users</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/students}">Students</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/subjects}">Subjects</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/classes}">Classes</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/attendances}">Attendances</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container" th:fragment="content"></div>
+	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+
+</html>

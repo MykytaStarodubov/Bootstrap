@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="layout :: content">
+<head>
+    <title>Welcome</title>
+</head>
+<body>
+    <h1 th:text="${title}">Welcome to the University Schedule Application</h1>
+    <ul>
+        <li><a th:href="@{/roles}">Roles</a></li>
+        <li><a th:href="@{/users}">Users</a></li>
+        <li><a th:href="@{/students}">Students</a></li>
+        <li><a th:href="@{/subjects}">Subjects</a></li>
+        <li><a th:href="@{/classes}">Classes</a></li>
+        <li><a th:href="@{/attendance}">Attendance</a></li>
+    </ul>
+</body>
+</html>

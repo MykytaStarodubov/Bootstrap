@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Students</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>Students</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Mobile</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>College ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="student : ${students}">
+                    <td th:text="${student.studentId}">1</td>
+                    <td th:text="${student.studentName}">John Student</td>
+                    <td th:text="${student.studentMobile}">1234567890</td>
+                    <td th:text="${student.studentEmail}">john.student@example.com</td>
+                    <td th:text="${student.studentAddress}">Student Lane</td>
+                    <td th:text="${student.studentUsername}">johnstudent</td>
+                    <td th:text="${student.studentPassword}">password</td>
+                    <td th:text="${student.studentCollegeId}">1</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>
