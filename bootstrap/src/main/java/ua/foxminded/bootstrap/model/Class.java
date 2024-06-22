@@ -1,7 +1,7 @@
 package ua.foxminded.bootstrap.model;
 
 import jakarta.persistence.*;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "classes")
@@ -33,7 +33,11 @@ public class Class {
 
     @Column(name = "class_room")
     private String classRoom;
-
+    
+    @ManyToOne
+    @JoinColumn(name = "timetable_id")
+    private Timetable timetable;
+    
     @ManyToMany
     @JoinTable(name = "class_subject", joinColumns = @JoinColumn(name = "class_id"), inverseJoinColumns = @JoinColumn(name = "subject_id"))
     private Set<Subject> subjects;

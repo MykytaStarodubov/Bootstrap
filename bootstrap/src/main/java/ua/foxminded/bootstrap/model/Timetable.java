@@ -21,8 +21,8 @@ public class Timetable {
 	@Column(name = "timetable_name")
 	private String timetableName;
 
-	@OneToMany(mappedBy = "timetable")
-	private Set<Class> classes;
+	   @OneToMany(mappedBy = "timetable")
+	    private Set<Class> classes;
 
 	public Timetable(int timetableId, String timetableDescription, String timetableType, String timetableName) {
 		this.timetableId = timetableId;
