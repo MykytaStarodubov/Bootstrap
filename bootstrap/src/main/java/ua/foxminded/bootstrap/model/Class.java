@@ -29,7 +29,7 @@ public class Class {
 
     @ManyToOne
     @JoinColumn(name = "class_student_id")
-    private int classStudentId;
+    private Student classStudentId;
 
     @Column(name = "class_room")
     private String classRoom;
@@ -39,7 +39,7 @@ public class Class {
     private Set<Subject> subjects;
 
     public Class(int id, String name, int classId, String className, String classDescription, String classType,
-            int classStudentId, String classRoom) {
+    		Student classStudentId, String classRoom) {
         this.id = id;
         this.name = name;
         this.classId = classId;

@@ -1,8 +1,14 @@
 package ua.foxminded.bootstrap.model;
 
-import ua.foxminded.bootstrap.model.User;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Column;
+import jakarta.persistence.*; 
 import java.util.Set;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 @Table(name = "students")
@@ -16,50 +22,43 @@ public class Student {
     @Column(name = "student_name", nullable = false)
     private String studentName;
 
-    @Column(name = "student_mobile")
-    private String studentMobile;
-
-    @Column(name = "student_email", nullable = false)
-    private String studentEmail;
-
-    @Column(name = "student_address")
-    private String studentAddress;
-
-    @Column(name = "student_username", nullable = false)
-    private String studentUsername;
-
-    @Column(name = "student_password", nullable = false)
-    private String studentPassword;
-
-    @Column(name = "student_college_id")
-    private int studentCollegeId;
-
-    @OneToMany(mappedBy = "student")
-    private Set<Attendance> attendances;
-
-	public Student(int userId, int userRoleId, String userName, String userEmail, String userDob, String userAddress,
-			String studentMobile, String studentUsername, String studentPassword, int studentCollegeId) {
-		super();
-		this.studentMobile = studentMobile;
-		this.studentUsername = studentUsername;
-		this.studentPassword = studentPassword;
-		this.studentCollegeId = studentCollegeId;
-	}
-	public Student(int studentId, String studentName) {
-	    this.studentId = studentId;
-	    this.studentName = studentName;
-	}
+  
+    @OneToMany(mappedBy = "classes")
+    @JoinTable(name = "student_class", joinColumns = @JoinColumn(name = "student_id"), inverseJoinColumns = @JoinColumn(name = "class_id"))
+    private Set<Class> classes;
 
 
-	public void addStudent() {
-	}
+    public Student() {}
 
-	public void editStudent() {
-	}
+    public Student(int studentId, String studentName) {
+        this.studentId = studentId;
+        this.studentName = studentName;
+    }
+    public Student(String studentName) {
+        this.studentName = studentName;
+    }
 
-	public void deleteStudent() {
-	}
+    public int getStudentId() {
+        return studentId;
+    }
 
-	public void searchStudent() {
-	}
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
+    }
+
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
+
+    public Set<Class> getClasses() {
+        return classes;
+    }
+
+    public void setClasses(Set<Class> classes) {
+        this.classes = classes;
+    }
 }
