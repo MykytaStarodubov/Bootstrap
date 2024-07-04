@@ -4,7 +4,7 @@ import ua.foxminded.bootstrap.model.User;
 import java.util.List;
 
 public interface UserService {
-    User findUserById(int id);
+    User findUserById(Long id);
 
     List<User> findAllUsers();
 
@@ -12,5 +12,5 @@ public interface UserService {
 
     void updateUser(User user);
 
-    void deleteUserById(int id);
+    void deleteUserById(Long id);
 }

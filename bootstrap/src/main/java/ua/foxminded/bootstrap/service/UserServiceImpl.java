@@ -2,7 +2,6 @@ package ua.foxminded.bootstrap.service;
 
 import ua.foxminded.bootstrap.dao.UserRepository;
 import ua.foxminded.bootstrap.model.User;
-import ua.foxminded.bootstrap.service.UserService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,7 +17,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findUserById(int id) {
+    public User findUserById(Long id) {
         return userRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException("User not found: " + id));
     }
@@ -42,7 +41,7 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     @Override
-    public void deleteUserById(int id) {
+    public void deleteUserById(Long id) {
         userRepository.deleteById(id);
     }
 

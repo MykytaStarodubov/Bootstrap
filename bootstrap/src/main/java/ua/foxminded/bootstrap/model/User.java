@@ -1,13 +1,7 @@
 package ua.foxminded.bootstrap.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.JoinColumn;
+import jakarta.persistence.*;
+import ua.foxminded.bootstrap.model.enummodel.Role;
 
 @Entity
 @Table(name = "users")
@@ -24,8 +18,8 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @ManyToOne
-    @JoinColumn(name = "role_id", nullable = false)
+    @Enumerated(EnumType.STRING) 
+    @Column(name = "role", nullable = false)
     private Role role;
 
     public User() {}

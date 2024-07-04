@@ -25,18 +25,17 @@ public class UserServiceImplTest {
 
     @Test
     public void findUserById_shouldThrowException_whenUserNotFound() {
-        when(userRepository.findById(1)).thenReturn(Optional.empty());
+        when(userRepository.findById(1L)).thenReturn(Optional.empty());
 
         assertThrows(UserServiceImpl.UserNotFoundException.class, () -> {
-            userService.findUserById(1);
+            userService.findUserById(1L);
         });
     }
+
     @Test
     public void createUser_shouldSaveUser() {
-    
         User newUser = new User("John Doe", "john@example.com");
 
-       
         userService.createUser(newUser);
 
         verify(userRepository).create(newUser);
@@ -44,25 +43,19 @@ public class UserServiceImplTest {
 
     @Test
     public void updateUser_shouldUpdateExistingUser() {
-    
         User user = new User("Isabella Doe", "isa@example.com");
 
-       
         userService.updateUser(user);
 
-     
         verify(userRepository).update(user);
     }
 
     @Test
     public void deleteUserById_shouldDeleteUser() {
-      
-        int idToDelete = 1;
+        Long idToDelete = 1L;
 
-    
         userService.deleteUserById(idToDelete);
 
-  
         verify(userRepository).deleteById(idToDelete);
     }
 }

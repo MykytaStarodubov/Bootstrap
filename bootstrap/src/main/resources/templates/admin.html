@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Panel</title>
+</head>
+<body>
+<h1>Admin Panel</h1>
+
+<div>
+    Logged in as: <span th:text="${#authentication.name}"></span>
+</div>
+
+<table>
+    <tr>
+        <th>Username</th>
+        <th>Role</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.username}">Username</td>
+        <td th:text="${user.role}">Role</td>
+        <td>
+            <form th:action="@{/admin/assign-role}" method="post">
+                <input type="hidden" name="userId" th:value="${user.userId}"/>
+                <select name="role">
+                    <option th:each="role : ${roles}" th:value="${role}" th:text="${role}"></option>
+                </select>
+                <button type="submit">Assign Role</button>
+            </form>
+        </td>
+    </tr>
+</table>
+<a th:href="@{/logout}">Logout</a>
+</body>
+</html>
