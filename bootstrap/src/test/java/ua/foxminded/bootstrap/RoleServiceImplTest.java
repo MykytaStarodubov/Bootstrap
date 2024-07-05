@@ -1,20 +1,23 @@
 package ua.foxminded.bootstrap;
 
-import ua.foxminded.bootstrap.dao.RoleRepository;
-import ua.foxminded.bootstrap.model.Role;
-import ua.foxminded.bootstrap.service.RoleServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import ua.foxminded.bootstrap.dao.RoleRepository;
+import ua.foxminded.bootstrap.exception.RoleNotFoundException;
+import ua.foxminded.bootstrap.model.Role;
+import ua.foxminded.bootstrap.service.RoleServiceImpl;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class RoleServiceImplTest {
@@ -29,9 +32,7 @@ public class RoleServiceImplTest {
     public void findRoleById_shouldThrowException_whenRoleNotFound() {
         when(roleRepository.findById(1)).thenReturn(Optional.empty());
 
-        assertThrows(RoleServiceImpl.RoleNotFoundException.class, () -> {
-            roleService.findRoleById(1);
-        });
+        assertThrows(RoleNotFoundException.class, () -> roleService.findRoleById(1));
     }
 
     @Test

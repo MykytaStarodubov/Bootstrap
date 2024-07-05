@@ -12,8 +12,11 @@ import java.util.List;
 @Controller
 public class SubjectController {
 
-    @Autowired
-    private SubjectService subjectService;
+    private final SubjectService subjectService;
+
+    public SubjectController(SubjectService subjectService) {
+        this.subjectService = subjectService;
+    }
 
     @GetMapping("/subjects")
     public String listSubjects(Model model) {

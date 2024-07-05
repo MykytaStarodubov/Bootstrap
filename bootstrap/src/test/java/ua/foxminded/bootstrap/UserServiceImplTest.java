@@ -1,18 +1,20 @@
 package ua.foxminded.bootstrap;
 
-import ua.foxminded.bootstrap.dao.UserRepository;
-import ua.foxminded.bootstrap.model.User;
-import ua.foxminded.bootstrap.service.UserServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import ua.foxminded.bootstrap.dao.UserRepository;
+import ua.foxminded.bootstrap.exception.UserNotFoundException;
+import ua.foxminded.bootstrap.model.User;
+import ua.foxminded.bootstrap.service.UserServiceImpl;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class UserServiceImplTest {
@@ -27,9 +29,7 @@ public class UserServiceImplTest {
     public void findUserById_shouldThrowException_whenUserNotFound() {
         when(userRepository.findById(1L)).thenReturn(Optional.empty());
 
-        assertThrows(UserServiceImpl.UserNotFoundException.class, () -> {
-            userService.findUserById(1L);
-        });
+        assertThrows(UserNotFoundException.class, () -> userService.findUserById(1L));
     }
 
     @Test

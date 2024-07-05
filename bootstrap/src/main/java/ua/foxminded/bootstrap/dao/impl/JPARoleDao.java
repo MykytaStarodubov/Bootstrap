@@ -1,7 +1,5 @@
 package ua.foxminded.bootstrap.dao.impl;
 
-
-
 import ua.foxminded.bootstrap.dao.RoleRepository;
 import ua.foxminded.bootstrap.model.Role;
 import jakarta.persistence.EntityManager;

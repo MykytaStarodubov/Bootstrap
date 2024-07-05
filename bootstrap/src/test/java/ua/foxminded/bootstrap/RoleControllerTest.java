@@ -29,7 +29,7 @@ public class RoleControllerTest {
 	private RoleService roleService;
 
 	@Test
-	@WithMockUser(username = "user", roles = { "USER" })
+	@WithMockUser(username = "user")
 	public void testListRoles() throws Exception {
 		Role role1 = new Role("Admin");
 		role1.setRoleId(1);

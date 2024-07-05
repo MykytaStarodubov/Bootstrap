@@ -1,8 +1,15 @@
 package ua.foxminded.bootstrap.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.Set;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "timetables")
 public class Timetable {
@@ -21,25 +28,13 @@ public class Timetable {
 	@Column(name = "timetable_name")
 	private String timetableName;
 
-	   @OneToMany(mappedBy = "timetable")
-	    private Set<Class> classes;
+	@OneToMany(mappedBy = "timetable")
+	private Set<Class> classes;
 
 	public Timetable(int timetableId, String timetableDescription, String timetableType, String timetableName) {
 		this.timetableId = timetableId;
 		this.timetableDescription = timetableDescription;
 		this.timetableType = timetableType;
 		this.timetableName = timetableName;
-	}
-
-	public void addTimetable() {
-	}
-
-	public void editTimetable() {
-	}
-
-	public void deleteTimetable() {
-	}
-
-	public void searchTimetable() {
 	}
 }

@@ -1,6 +1,5 @@
 package ua.foxminded.bootstrap.service;
 
-
 import ua.foxminded.bootstrap.dao.ClassRepository;
 import ua.foxminded.bootstrap.model.Class;
 import ua.foxminded.bootstrap.service.ClassService;
@@ -19,7 +18,7 @@ public class ClassServiceImpl implements ClassService {
     }
 
     @Override
-    public Class findClassById(int id) {
+    public Class findClassById(int id) throws ClassNotFoundException {
         return classRepository.findById(id)
                 .orElseThrow(() -> new ClassNotFoundException("Class not found: " + id));
     }
@@ -45,11 +44,5 @@ public class ClassServiceImpl implements ClassService {
     @Override
     public void deleteClassById(int id) {
         classRepository.deleteById(id);
-    }
-
-    public static class ClassNotFoundException extends RuntimeException {
-        public ClassNotFoundException(String message) {
-            super(message);
-        }
     }
 }

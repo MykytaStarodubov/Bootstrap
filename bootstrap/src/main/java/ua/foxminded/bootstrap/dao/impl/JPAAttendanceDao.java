@@ -1,6 +1,5 @@
 package ua.foxminded.bootstrap.dao.impl;
 
-
 import org.springframework.stereotype.Repository;
 import ua.foxminded.bootstrap.model.Attendance;
 import ua.foxminded.bootstrap.dao.*;

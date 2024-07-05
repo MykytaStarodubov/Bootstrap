@@ -14,8 +14,11 @@ import java.util.List;
 @RequestMapping("/classes")
 public class ClassController {
 
-    @Autowired
-    private ClassService classService;
+    private final ClassService classService;
+
+    public ClassController(ClassService classService) {
+        this.classService = classService;
+    }
 
     @GetMapping
     public String listClasses(Model model) {

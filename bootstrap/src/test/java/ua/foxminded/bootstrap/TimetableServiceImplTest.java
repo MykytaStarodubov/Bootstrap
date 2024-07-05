@@ -1,18 +1,20 @@
 package ua.foxminded.bootstrap;
 
-import ua.foxminded.bootstrap.dao.TimetableRepository;
-import ua.foxminded.bootstrap.model.Timetable;
-import ua.foxminded.bootstrap.service.TimetableServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import ua.foxminded.bootstrap.dao.TimetableRepository;
+import ua.foxminded.bootstrap.exception.TimetableNotFoundException;
+import ua.foxminded.bootstrap.model.Timetable;
+import ua.foxminded.bootstrap.service.TimetableServiceImpl;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class TimetableServiceImplTest {
@@ -27,9 +29,7 @@ public class TimetableServiceImplTest {
     public void findTimetableById_shouldThrowException_whenTimetableNotFound() {
         when(timetableRepository.findById(1)).thenReturn(Optional.empty());
 
-        assertThrows(TimetableServiceImpl.TimetableNotFoundException.class, () -> {
-            timetableService.findTimetableById(1);
-        });
+        assertThrows(TimetableNotFoundException.class, () -> timetableService.findTimetableById(1));
     }
 
     @Test

@@ -1,6 +1,7 @@
 package ua.foxminded.bootstrap.service;
 
 import ua.foxminded.bootstrap.dao.SubjectRepository;
+import ua.foxminded.bootstrap.exception.SubjectNotFoundException;
 import ua.foxminded.bootstrap.model.Subject;
 import ua.foxminded.bootstrap.service.SubjectService;
 import org.springframework.stereotype.Service;
@@ -44,11 +45,5 @@ public class SubjectServiceImpl implements SubjectService {
     @Override
     public void deleteSubjectById(int id) {
         subjectRepository.deleteById(id);
-    }
-
-    public static class SubjectNotFoundException extends RuntimeException {
-        public SubjectNotFoundException(String message) {
-            super(message);
-        }
     }
 }

@@ -4,7 +4,7 @@ import ua.foxminded.bootstrap.model.Class;
 import java.util.List;
 
 public interface ClassService {
-    Class findClassById(int id);
+    Class findClassById(int id) throws ClassNotFoundException;
 
     List<Class> findAllClasses();
 

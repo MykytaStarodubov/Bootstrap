@@ -1,9 +1,10 @@
 package ua.foxminded.bootstrap.service;
 
-import ua.foxminded.bootstrap.dao.UserRepository;
-import ua.foxminded.bootstrap.model.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ua.foxminded.bootstrap.dao.UserRepository;
+import ua.foxminded.bootstrap.exception.UserNotFoundException;
+import ua.foxminded.bootstrap.model.User;
 
 import java.util.List;
 
@@ -43,11 +44,5 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUserById(Long id) {
         userRepository.deleteById(id);
-    }
-
-    public static class UserNotFoundException extends RuntimeException {
-        public UserNotFoundException(String message) {
-            super(message);
-        }
     }
 }

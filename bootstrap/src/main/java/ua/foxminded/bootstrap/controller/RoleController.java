@@ -12,8 +12,11 @@ import java.util.List;
 @Controller
 public class RoleController {
 
-    @Autowired
-    private RoleService roleService;
+    private final RoleService roleService;
+
+    public RoleController(RoleService roleService) {
+        this.roleService = roleService;
+    }
 
     @GetMapping("/roles")
     public String listRoles(Model model) {

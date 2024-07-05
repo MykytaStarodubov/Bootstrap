@@ -1,10 +1,10 @@
 package ua.foxminded.bootstrap.service;
 
-import ua.foxminded.bootstrap.dao.TimetableRepository;
-import ua.foxminded.bootstrap.model.Timetable;
-import ua.foxminded.bootstrap.service.TimetableService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ua.foxminded.bootstrap.dao.TimetableRepository;
+import ua.foxminded.bootstrap.exception.TimetableNotFoundException;
+import ua.foxminded.bootstrap.model.Timetable;
 
 import java.util.List;
 
@@ -44,11 +44,5 @@ public class TimetableServiceImpl implements TimetableService {
     @Override
     public void deleteTimetableById(int id) {
         timetableRepository.deleteById(id);
-    }
-
-    public static class TimetableNotFoundException extends RuntimeException {
-        public TimetableNotFoundException(String message) {
-            super(message);
-        }
     }
 }

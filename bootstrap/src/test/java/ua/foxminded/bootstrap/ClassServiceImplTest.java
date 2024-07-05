@@ -1,19 +1,19 @@
 package ua.foxminded.bootstrap;
 
-import ua.foxminded.bootstrap.dao.ClassRepository;
-import ua.foxminded.bootstrap.model.Class;
-import ua.foxminded.bootstrap.service.ClassServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import ua.foxminded.bootstrap.dao.ClassRepository;
+import ua.foxminded.bootstrap.model.Class;
+import ua.foxminded.bootstrap.service.ClassServiceImpl;
 
 import java.util.Optional;
-import java.util.List;
 
-import static org.mockito.Mockito.*;
-import static org.junit.jupiter.api.Assertions.*;;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class ClassServiceImplTest {
@@ -28,9 +28,7 @@ public class ClassServiceImplTest {
     public void findClassById_shouldThrowException_whenClassNotFound() {
         when(classRepository.findById(1)).thenReturn(Optional.empty());
 
-        assertThrows(ClassServiceImpl.ClassNotFoundException.class, () -> {
-            classService.findClassById(1);
-        });
+        assertThrows(ClassNotFoundException.class, () -> classService.findClassById(1));
     }
 
 	@Test

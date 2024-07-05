@@ -1,9 +1,10 @@
-package ua.foxminded.bootstrap;
+package ua.foxminded.bootstrap.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
@@ -31,10 +32,11 @@ public class SecurityConfig {
 
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-
 		return http
-				.authorizeHttpRequests(authorize -> authorize.requestMatchers("/css/**", "/webjars/**").permitAll()
-						.requestMatchers("/admin/**").hasRole("ADMIN").anyRequest().authenticated())
-				.formLogin(form -> form.loginPage("/login").permitAll()).logout(logout -> logout.permitAll()).build();
+				.authorizeHttpRequests(authorize ->
+						authorize.requestMatchers("/css/**", "/webjars/**").permitAll()
+								.requestMatchers("/admin/**").hasRole("ADMIN").anyRequest().authenticated())
+				.formLogin(form -> form.loginPage("/login").permitAll())
+				.logout(LogoutConfigurer::permitAll).build();
 	}
 }

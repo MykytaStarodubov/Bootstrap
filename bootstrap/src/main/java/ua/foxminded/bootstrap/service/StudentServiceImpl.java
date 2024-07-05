@@ -1,10 +1,10 @@
 package ua.foxminded.bootstrap.service;
 
-import ua.foxminded.bootstrap.dao.StudentRepository;
-import ua.foxminded.bootstrap.model.Student;
-import ua.foxminded.bootstrap.service.StudentService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ua.foxminded.bootstrap.dao.StudentRepository;
+import ua.foxminded.bootstrap.exception.StudentNotFoundException;
+import ua.foxminded.bootstrap.model.Student;
 
 import java.util.List;
 
@@ -44,11 +44,5 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public void deleteStudentById(int id) {
         studentRepository.deleteById(id);
-    }
-
-    public static class StudentNotFoundException extends RuntimeException {
-        public StudentNotFoundException(String message) {
-            super(message);
-        }
     }
 }

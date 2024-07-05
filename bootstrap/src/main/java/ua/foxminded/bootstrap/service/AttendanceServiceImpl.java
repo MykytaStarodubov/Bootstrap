@@ -8,7 +8,6 @@ import ua.foxminded.bootstrap.model.Attendance;
 import java.util.List;
 
 @Service
-@Transactional
 public class AttendanceServiceImpl implements AttendanceService {
 
     private final AttendanceRepository attendanceRepository;
@@ -27,16 +26,19 @@ public class AttendanceServiceImpl implements AttendanceService {
         return attendanceRepository.findAll();
     }
 
+    @Transactional
     @Override
     public void createAttendance(Attendance attendance) {
         attendanceRepository.create(attendance);
     }
 
+    @Transactional
     @Override
     public void updateAttendance(Attendance attendance) {
         attendanceRepository.update(attendance);
     }
 
+    @Transactional
     @Override
     public void deleteAttendanceById(int id) {
         attendanceRepository.deleteById(id);

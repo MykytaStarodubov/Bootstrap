@@ -1,18 +1,20 @@
 package ua.foxminded.bootstrap;
 
-import ua.foxminded.bootstrap.dao.SubjectRepository;
-import ua.foxminded.bootstrap.model.Subject;
-import ua.foxminded.bootstrap.service.SubjectServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import ua.foxminded.bootstrap.dao.SubjectRepository;
+import ua.foxminded.bootstrap.exception.SubjectNotFoundException;
+import ua.foxminded.bootstrap.model.Subject;
+import ua.foxminded.bootstrap.service.SubjectServiceImpl;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class SubjectServiceImplTest {
@@ -27,14 +29,11 @@ public class SubjectServiceImplTest {
     public void findSubjectById_shouldThrowException_whenSubjectNotFound() {
         when(subjectRepository.findById(1)).thenReturn(Optional.empty());
 
-        assertThrows(SubjectServiceImpl.SubjectNotFoundException.class, () -> {
-            subjectService.findSubjectById(1);
-        });
+        assertThrows(SubjectNotFoundException.class, () -> subjectService.findSubjectById(1));
     }
 
 	@Test
 	public void createSubject_shouldSaveSubject() {
-
 		Subject subject = new Subject("Chemistry");
 
 		subjectService.createSubject(subject);
@@ -44,7 +43,6 @@ public class SubjectServiceImplTest {
 
 	@Test
 	public void updateSubject_shouldUpdateExistingSubject() {
-
 		Subject subject = new Subject(1, "Biology");
 
 		subjectService.updateSubject(subject);
@@ -54,7 +52,6 @@ public class SubjectServiceImplTest {
 
 	@Test
 	public void deleteSubjectById_shouldDeleteSubject() {
-
 		int subjectId = 1;
 
 		subjectService.deleteSubjectById(subjectId);

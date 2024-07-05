@@ -1,8 +1,15 @@
 package ua.foxminded.bootstrap.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.*;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "classes")
 public class Class {
@@ -57,33 +64,5 @@ public class Class {
     public Class(int classId, String className) {
         this.classId = classId;
         this.className = className;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void addClass() {
-    }
-
-    public void editClass() {
-    }
-
-    public void deleteClass() {
-    }
-
-    public void searchClass() {
     }
 }

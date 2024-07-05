@@ -12,8 +12,11 @@ import java.util.List;
 @Controller
 public class AttendanceController {
 
-    @Autowired
-    private AttendanceService attendanceService;
+    private final AttendanceService attendanceService;
+
+    public AttendanceController(AttendanceService attendanceService) {
+        this.attendanceService = attendanceService;
+    }
 
     @GetMapping("/attendances")
     public String listAttendances(Model model) {

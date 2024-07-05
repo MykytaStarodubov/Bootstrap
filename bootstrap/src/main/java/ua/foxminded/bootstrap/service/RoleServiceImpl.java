@@ -1,11 +1,10 @@
 package ua.foxminded.bootstrap.service;
 
-
-import ua.foxminded.bootstrap.dao.RoleRepository;
-import ua.foxminded.bootstrap.model.Role;
-import ua.foxminded.bootstrap.service.RoleService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ua.foxminded.bootstrap.dao.RoleRepository;
+import ua.foxminded.bootstrap.exception.RoleNotFoundException;
+import ua.foxminded.bootstrap.model.Role;
 
 import java.util.List;
 
@@ -47,9 +46,4 @@ public class RoleServiceImpl implements RoleService {
         roleRepository.deleteById(id);
     }
 
-    public static class RoleNotFoundException extends RuntimeException {
-        public RoleNotFoundException(String message) {
-            super(message);
-        }
-    }
 }

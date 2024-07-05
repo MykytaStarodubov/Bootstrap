@@ -1,8 +1,14 @@
 package ua.foxminded.bootstrap.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import ua.foxminded.bootstrap.model.enummodel.Role;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "users")
 public class User {
@@ -22,8 +28,6 @@ public class User {
     @Column(name = "role", nullable = false)
     private Role role;
 
-    public User() {}
-
     public User(String username, String password) {
         this.username = username;
         this.password = password;
@@ -32,38 +36,6 @@ public class User {
     public User(String username, String password, Role role) {
         this.username = username;
         this.password = password;
-        this.role = role;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
         this.role = role;
     }
 }

@@ -1,8 +1,15 @@
 package ua.foxminded.bootstrap.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.Set;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "subjects")
 public class Subject {
@@ -30,8 +37,6 @@ public class Subject {
     @OneToMany(mappedBy = "subject")
     private Set<Attendance> attendances;
 
-    public Subject() {}
-
     public Subject(String subjectName) {
         this.subjectName = subjectName;
     }
@@ -47,53 +52,5 @@ public class Subject {
     public Subject(int subjectId, String subjectName) {
         this.subjectId = subjectId;
         this.subjectName = subjectName;
-    }
-
-    public int getSubjectId() {
-        return subjectId;
-    }
-
-    public void setSubjectId(int subjectId) {
-        this.subjectId = subjectId;
-    }
-
-    public String getSubjectName() {
-        return subjectName;
-    }
-
-    public void setSubjectName(String subjectName) {
-        this.subjectName = subjectName;
-    }
-
-    public String getSubjectType() {
-        return subjectType;
-    }
-
-    public void setSubjectType(String subjectType) {
-        this.subjectType = subjectType;
-    }
-
-    public String getSubjectDescription() {
-        return subjectDescription;
-    }
-
-    public void setSubjectDescription(String subjectDescription) {
-        this.subjectDescription = subjectDescription;
-    }
-
-    public int getSubjectStudentId() {
-        return subjectStudentId;
-    }
-
-    public void setSubjectStudentId(int subjectStudentId) {
-        this.subjectStudentId = subjectStudentId;
-    }
-
-    public Set<Class> getClasses() {
-        return classes;
-    }
-
-    public void setClasses(Set<Class> classes) {
-        this.classes = classes;
     }
 }

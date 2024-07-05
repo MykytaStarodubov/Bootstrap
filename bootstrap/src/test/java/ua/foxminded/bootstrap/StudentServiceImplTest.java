@@ -1,6 +1,7 @@
 package ua.foxminded.bootstrap;
 
 import ua.foxminded.bootstrap.dao.StudentRepository;
+import ua.foxminded.bootstrap.exception.StudentNotFoundException;
 import ua.foxminded.bootstrap.model.Student;
 import ua.foxminded.bootstrap.service.StudentServiceImpl;
 import org.junit.jupiter.api.Test;
@@ -29,13 +30,10 @@ public class StudentServiceImplTest {
     public void findStudentById_shouldThrowException_whenStudentNotFound() {
         when(studentRepository.findById(1)).thenReturn(Optional.empty());
 
-        assertThrows(StudentServiceImpl.StudentNotFoundException.class, () -> {
+        assertThrows(StudentNotFoundException.class, () -> {
             studentService.findStudentById(1);
         });
     }
-
-  
-
    
     @Test
     public void createStudent_shouldSaveStudent() {
@@ -49,7 +47,6 @@ public class StudentServiceImplTest {
     @Test
     public void updateStudent_shouldUpdateExistingStudent() {
     	Student student = new Student(1, "John Doe");
-
 
         studentService.updateStudent(student);
 
