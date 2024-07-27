@@ -30,8 +30,6 @@ public class Attendance {
 
     @Column(name = "attendance_description")
     private String attendanceDescription;
-
-    public Attendance() {}
     
     public Attendance(Student student, Subject subject, String attendanceType, String attendanceDescription) {
         this.student = student;

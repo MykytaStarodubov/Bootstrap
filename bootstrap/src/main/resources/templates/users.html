@@ -20,10 +20,13 @@
             <tbody>
                 <tr th:each="user : ${users}">
                     <td th:text="${user.userId}">1</td>
-                    <td th:text="${user.userName}">John Doe</td>
-                    <td th:text="${user.userEmail}">john.doe@example.com</td>
-                    <td th:text="${user.userDob}">2000-01-01</td>
-                    <td th:text="${user.userAddress}">123 Main St</td>
+                    <td th:text="${user.username}">John Doe</td>
+                    <!-- When you're writing th:test="${user.userEmail} this field should be available in your User class
+                    otherwise you will have an error
+                    -->
+                    <td>john.doe@example.com</td>
+                    <td>2000-01-01</td>
+                    <td>123 Main St</td>
                 </tr>
             </tbody>
         </table>
