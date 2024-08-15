@@ -12,69 +12,72 @@ import lombok.Setter;
 @Table(name = "attendance")
 public class Attendance {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "attendance_id")
-    private int attendanceId;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "attendance_id")
+	private int attendanceId;
 
-    @ManyToOne
-    @JoinColumn(name = "attendance_student_id", nullable = false)
-    private Student student;
+	@ManyToOne
+	@JoinColumn(name = "attendance_student_id", nullable = false)
+	private Student student;
 
-    @ManyToOne
-    @JoinColumn(name = "attendance_subject_id", nullable = false)
-    private Subject subject;
+	@ManyToOne
+	@JoinColumn(name = "attendance_subject_id", nullable = false)
+	private Subject subject;
 
-    @Column(name = "attendance_type")
-    private String attendanceType;
+	@Column(name = "attendance_type")
+	private String attendanceType;
 
-    @Column(name = "attendance_description")
-    private String attendanceDescription;
-    
-    public Attendance(Student student, Subject subject, String attendanceType, String attendanceDescription) {
-        this.student = student;
-        this.subject = subject;
-        this.attendanceType = attendanceType;
-        this.attendanceDescription = attendanceDescription;
-    }
+	@Column(name = "attendance_description")
+	private String attendanceDescription;
 
-    public int getAttendanceId() {
-        return attendanceId;
-    }
+	public Attendance(Student student, Subject subject, String attendanceType, String attendanceDescription) {
+		this.student = student;
+		this.subject = subject;
+		this.attendanceType = attendanceType;
+		this.attendanceDescription = attendanceDescription;
+	}
 
-    public void setAttendanceId(int attendanceId) {
-        this.attendanceId = attendanceId;
-    }
+	public Attendance() {
+	}
 
-    public Student getStudent() {
-        return student;
-    }
+	public int getAttendanceId() {
+		return attendanceId;
+	}
 
-    public void setStudent(Student student) {
-        this.student = student;
-    }
+	public void setAttendanceId(int attendanceId) {
+		this.attendanceId = attendanceId;
+	}
 
-    public Subject getSubject() {
-        return subject;
-    }
+	public Student getStudent() {
+		return student;
+	}
 
-    public void setSubject(Subject subject) {
-        this.subject = subject;
-    }
+	public void setStudent(Student student) {
+		this.student = student;
+	}
 
-    public String getAttendanceType() {
-        return attendanceType;
-    }
+	public Subject getSubject() {
+		return subject;
+	}
 
-    public void setAttendanceType(String attendanceType) {
-        this.attendanceType = attendanceType;
-    }
+	public void setSubject(Subject subject) {
+		this.subject = subject;
+	}
 
-    public String getAttendanceDescription() {
-        return attendanceDescription;
-    }
+	public String getAttendanceType() {
+		return attendanceType;
+	}
 
-    public void setAttendanceDescription(String attendanceDescription) {
-        this.attendanceDescription = attendanceDescription;
-    }
+	public void setAttendanceType(String attendanceType) {
+		this.attendanceType = attendanceType;
+	}
+
+	public String getAttendanceDescription() {
+		return attendanceDescription;
+	}
+
+	public void setAttendanceDescription(String attendanceDescription) {
+		this.attendanceDescription = attendanceDescription;
+	}
 }

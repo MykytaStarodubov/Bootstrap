@@ -33,10 +33,10 @@ public class SecurityConfig {
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		return http
-				.authorizeHttpRequests(authorize ->
-						authorize.requestMatchers("/css/**", "/webjars/**").permitAll()
-								.requestMatchers("/admin/**").hasRole("ADMIN").anyRequest().authenticated())
-				.formLogin(form -> form.loginPage("/login").permitAll())
-				.logout(LogoutConfigurer::permitAll).build();
+				.authorizeHttpRequests(authorize -> authorize.requestMatchers("/css/**", "/webjars/**").permitAll()
+						.requestMatchers("/subjects/create", "/subjects/edit/**", "/subjects/delete/**")
+						.hasRole("ADMIN").requestMatchers("/subjects").hasAnyRole("ADMIN", "USER").anyRequest()
+						.authenticated())
+				.formLogin(form -> form.loginPage("/login").permitAll()).logout(LogoutConfigurer::permitAll).build();
 	}
 }
