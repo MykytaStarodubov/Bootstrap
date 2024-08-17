@@ -8,15 +8,7 @@
     <div class="container">
         <h1>Classes</h1>
         <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Student ID</th>
-                    <th>Room</th>
-                </tr>
+            <thead>            
             </thead>
             <tbody>
                 <tr th:each="class : ${classes}">
@@ -29,6 +21,9 @@
                 </tr>
             </tbody>
         </table>
+		        <div>
+				  <a th:href="@{/welcome}" class="btn btn-secondary">Back to Welcome</a>
+				</div>
     </div>
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>

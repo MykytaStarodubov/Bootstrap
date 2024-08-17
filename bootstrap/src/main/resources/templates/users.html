@@ -9,13 +9,6 @@
         <h1>Users</h1>
         <table class="table table-striped">
             <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Date of Birth</th>
-                    <th>Address</th>
-                </tr>
             </thead>
             <tbody>
                 <tr th:each="user : ${users}">
@@ -30,6 +23,9 @@
                 </tr>
             </tbody>
         </table>
+		        <div>
+				   <a th:href="@{/welcome}" class="btn btn-secondary">Back to Welcome</a>
+				</div>
     </div>
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>

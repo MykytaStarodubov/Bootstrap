@@ -9,16 +9,7 @@
         <h1>Students</h1>
         <table class="table table-striped">
             <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Mobile</th>
-                    <th>Email</th>
-                    <th>Address</th>
-                    <th>Username</th>
-                    <th>Password</th>
-                    <th>College ID</th>
-                </tr>
+      
             </thead>
             <tbody>
                 <tr th:each="student : ${students}">
@@ -33,6 +24,9 @@
                 </tr>
             </tbody>
         </table>
+		        <div>
+				   <a th:href="@{/welcome}" class="btn btn-secondary">Back to Welcome</a>
+				</div>
     </div>
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>

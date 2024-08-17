@@ -9,12 +9,6 @@
         <h1>Attendance</h1>
         <table class="table table-striped">
             <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Student ID</th>
-                    <th>Type</th>
-                    <th>Description</th>
-                </tr>
             </thead>
             <tbody>
                 <tr th:each="attendance : ${attendances}">
@@ -25,6 +19,10 @@
                 </tr>
             </tbody>
         </table>
+		
+		<div>
+             <a th:href="@{/welcome}" class="btn btn-secondary">Back to Welcome</a>
+		</div>
     </div>
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>

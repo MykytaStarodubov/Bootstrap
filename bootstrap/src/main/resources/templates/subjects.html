@@ -33,6 +33,10 @@
 			<div sec:authorize="hasRole('ADMIN')">
 			    <a th:href="@{/subjects/edit/{id}}" class="btn btn-warning">Update Subject</a>
 			</div>
+			
+			<div>
+			<a th:href="@{/welcome}" class="btn btn-secondary">Back to Welcome</a>
+			</div>
     </div>
 
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>

@@ -7,16 +7,16 @@
     <h1>Roles</h1>
     <table>
         <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-            </tr>
+            
         </thead>
         <tbody>
             <tr th:each="role : ${roles}">
                 <td th:text="${role.roleId}">1</td>
                 <td th:text="${role.name}">Admin</td>
             </tr>
+			   <div>
+				   <a th:href="@{/welcome}" class="btn btn-secondary">Back to Welcome</a>
+				</div>
         </tbody>
     </table>
 </body>
