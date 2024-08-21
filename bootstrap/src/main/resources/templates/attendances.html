@@ -10,14 +10,16 @@
         <table class="table table-striped">
             <thead>
             </thead>
-            <tbody>
-                <tr th:each="attendance : ${attendances}">
-                    <td th:text="${attendance.attendanceId}">1</td>
-                    <td th:text="${attendance.attendanceStudentId}">1</td>
-                    <td th:text="${attendance.attendanceType}">Present</td>
-                    <td th:text="${attendance.attendanceDescription}">Attended Math Class</td>
-                </tr>
-            </tbody>
+			<tbody>
+			    <tr th:each="attendance : ${attendances}">
+			        <td th:text="${attendance.attendanceId}">1</td>
+			        <td th:text="${attendance.student.studentId}">1</td>
+			        <td th:text="${attendance.subject.subjectId}">1</td>
+			        <td th:text="${attendance.attendanceType}">Present</td>
+			        <td th:text="${attendance.attendanceDescription}">Attended Math Class</td>
+			    </tr>
+			</tbody>
+
         </table>
 		
 		<div>
