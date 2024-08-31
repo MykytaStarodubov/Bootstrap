@@ -38,7 +38,7 @@ public class SubjectController {
     @PreAuthorize("hasRole('ADMIN')")
     public String showCreateForm(Model model) {
         model.addAttribute("subject", new Subject());
-        return "subjects";
+        return "subjects_create";
     }
 
     @PostMapping("/create")
