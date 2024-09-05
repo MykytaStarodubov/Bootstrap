@@ -12,9 +12,9 @@
             </thead>
             <tbody>
                 <tr th:each="subject : ${subjects}">
-                    <td text="${subject.subjectId}"></td>
-                    <td text="${subject.subjectName}"></td> 
-                    <td text="${subject.subjectDescription}"></td> 
+                    <td th:text="${subject.subjectId}"></td>
+                    <td th:text="${subject.subjectName}"></td>
+                    <td th:text="${subject.subjectDescription}"></td>
                 </tr>
                 <tr th:if="${#lists.isEmpty(subjects)}">
                     <td colspan="4">No subjects found</td>
