@@ -2,12 +2,10 @@ package ua.foxminded.bootstrap.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @Entity
 @Table(name = "attendance")
 public class Attendance {
