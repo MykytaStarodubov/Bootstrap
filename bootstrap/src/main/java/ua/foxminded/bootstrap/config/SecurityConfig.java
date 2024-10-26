@@ -22,7 +22,6 @@ public class SecurityConfig {
     public JdbcUserDetailsManager jdbcUserDetailsManager(DataSource dataSource) {
         JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager(dataSource);
 
-       
         if (!jdbcUserDetailsManager.userExists("admin")) {
             UserDetails admin = User.withUsername("admin")
                 .password(passwordEncoder().encode("adminpass"))
