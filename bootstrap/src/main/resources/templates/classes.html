@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
     <title>Classes</title>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
@@ -8,23 +8,42 @@
     <div class="container">
         <h1>Classes</h1>
         <table class="table table-striped">
-            <thead>            
+            <thead>
+                <tr>
+                </tr>
             </thead>
             <tbody>
                 <tr th:each="class : ${classes}">
-                    <td th:text="${class.classId}">1</td>
-                    <td th:text="${class.className}">Math Class</td>
-                    <td th:text="${class.classDescription}">Math Class Description</td>
-                    <td th:text="${class.classType}">Lecture</td>
-                    <td th:text="${class.classStudentId}">1</td>
-                    <td th:text="${class.classRoom}">Room 101</td>
+                    <td th:text="${class.classId}"></td>
+                    <td th:text="${class.className}"></td>
+                    <td th:text="${class.classDescription}"></td>
+                    <td th:text="${class.classType}"></td>
+                    <td th:text="${class.classStudentId?.id}"></td>
+                    <td th:text="${class.classRoom}"></td>
+                </tr>
+                <tr th:if="${#lists.isEmpty(classes)}">
+                    <td colspan="6">No classes found</td>
                 </tr>
             </tbody>
         </table>
-		        <div>
-				  <a th:href="@{/welcome}" class="btn btn-secondary">Back to Welcome</a>
+
+        <div sec:authorize="hasRole('ADMIN')">
+            <a th:href="@{/classes/create}" class="btn btn-primary">Add Class</a>
+        </div>
+		
+		       <div sec:authorize="hasRole('ADMIN')">
+				    <a th:href="@{/classes/delete/{id}}" class="btn btn-warning">Delete Subject</a>
 				</div>
+				
+					<div sec:authorize="hasRole('ADMIN')">
+					    <a th:href="@{/classes/edit/{id}}" class="btn btn-warning">Update Subject</a>
+					</div>
+					
+        <div>
+            <a th:href="@{/welcome}" class="btn btn-secondary">Back to Welcome</a>
+        </div>
     </div>
+
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 </body>

@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.*;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -40,17 +40,19 @@ public class Class {
 
     @Column(name = "class_room")
     private String classRoom;
-    
+
     @ManyToOne
     @JoinColumn(name = "timetable_id")
     private Timetable timetable;
-    
+
     @ManyToMany
-    @JoinTable(name = "class_subject", joinColumns = @JoinColumn(name = "class_id"), inverseJoinColumns = @JoinColumn(name = "subject_id"))
+    @JoinTable(name = "class_subject",
+               joinColumns = @JoinColumn(name = "class_id"),
+               inverseJoinColumns = @JoinColumn(name = "subject_id"))
     private Set<Subject> subjects;
 
     public Class(int id, String name, int classId, String className, String classDescription, String classType,
-    		Student classStudentId, String classRoom) {
+                 Student classStudentId, String classRoom) {
         this.id = id;
         this.name = name;
         this.classId = classId;
@@ -60,6 +62,11 @@ public class Class {
         this.classStudentId = classStudentId;
         this.classRoom = classRoom;
     }
+    public Class() {};
+    
+    public void setClassId(int subjectId) {
+		this.classId = classId;
+	}
 
     public Class(int classId, String className) {
         this.classId = classId;
