@@ -1,7 +1,7 @@
 package ua.foxminded.bootstrap.controller;
 
-import ua.foxminded.bootstrap.exception.ClassNotFoundException;
-import ua.foxminded.bootstrap.model.Class;
+import ua.foxminded.bootstrap.exception.UniversityClassNotFoundException;
+import ua.foxminded.bootstrap.model.UniversityClass;
 import ua.foxminded.bootstrap.service.ClassService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -31,7 +31,7 @@ public class ClassController {
 
     @GetMapping
     public String listClasses(Model model) {
-        List<Class> classes = classService.findAllClasses();
+        List<UniversityClass> classes = classService.findAllClasses();
         model.addAttribute("classes", classes);
         return "classes";
     }
@@ -39,13 +39,13 @@ public class ClassController {
     @GetMapping("/create")
     @PreAuthorize("hasRole('ADMIN')")
     public String showCreateForm(Model model) {
-        model.addAttribute("class", new Class());
+        model.addAttribute("class", new UniversityClass());
         return "class_create";
     }
 
     @PostMapping("/create")
     @PreAuthorize("hasRole('ADMIN')")
-    public String createClass(@ModelAttribute("class") Class clazz) {
+    public String createClass(@ModelAttribute("class") UniversityClass clazz) {
         classService.createClass(clazz);
         return "redirect:/classes";
     }
@@ -53,9 +53,9 @@ public class ClassController {
     @GetMapping("/edit/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public String showEditForm(@PathVariable int id, Model model) throws java.lang.ClassNotFoundException {
-        Class clazz = classService.findClassById(id);
+        UniversityClass clazz = classService.findClassById(id);
         if (clazz == null) {
-            throw new ClassNotFoundException("Class not found with ID: " + id);
+            throw new UniversityClassNotFoundException("Class not found with ID: " + id);
         }
         model.addAttribute("class", clazz);
         return "class_edit";
@@ -63,7 +63,7 @@ public class ClassController {
 
     @PostMapping("/edit/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public String updateClass(@PathVariable int id, @ModelAttribute("class") Class clazz) {
+    public String updateClass(@PathVariable int id, @ModelAttribute("class") UniversityClass clazz) {
         clazz.setClassId(id);
         classService.updateClass(clazz);
         return "redirect:/classes";

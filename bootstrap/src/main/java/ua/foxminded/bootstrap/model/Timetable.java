@@ -29,7 +29,7 @@ public class Timetable {
 	private String timetableName;
 
 	@OneToMany(mappedBy = "timetable")
-	private Set<Class> classes;
+	private Set<UniversityClass> classes;
 
 	public Timetable(int timetableId, String timetableDescription, String timetableType, String timetableName) {
 		this.timetableId = timetableId;

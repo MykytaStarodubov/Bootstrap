@@ -1,7 +1,7 @@
 package ua.foxminded.bootstrap.dao.impl;
 
 import ua.foxminded.bootstrap.dao.ClassRepository;
-import ua.foxminded.bootstrap.model.Class;
+import ua.foxminded.bootstrap.model.UniversityClass;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
@@ -17,24 +17,24 @@ public class JPAClassDao implements ClassRepository {
     private EntityManager entityManager;
 
     @Override
-    public Optional<Class> findById(int id) {
-        return Optional.ofNullable(entityManager.find(Class.class, id));
+    public Optional<UniversityClass> findById(int id) {
+        return Optional.ofNullable(entityManager.find(UniversityClass.class, id));
     }
 
     @Override
-    public List<Class> findAll() {
-        return entityManager.createQuery("SELECT c FROM Class c", Class.class).getResultList();
+    public List<UniversityClass> findAll() {
+        return entityManager.createQuery("SELECT c FROM Class c", UniversityClass.class).getResultList();
     }
 
     @Transactional
     @Override
-    public void create(Class clazz) {
+    public void create(UniversityClass clazz) {
         entityManager.persist(clazz);
     }
 
     @Transactional
     @Override
-    public void update(Class clazz) {
+    public void update(UniversityClass clazz) {
         entityManager.merge(clazz);
     }
 

@@ -32,7 +32,7 @@ public class Subject {
 	private int subjectStudentId;
 
 	@ManyToMany(mappedBy = "subjects")
-	private Set<Class> classes;
+	private Set<UniversityClass> classes;
 
 	@OneToMany(mappedBy = "subject")
 	private Set<Attendance> attendances;

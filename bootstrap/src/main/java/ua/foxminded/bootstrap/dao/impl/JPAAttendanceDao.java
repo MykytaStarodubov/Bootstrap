@@ -5,7 +5,7 @@ import ua.foxminded.bootstrap.model.Attendance;
 import ua.foxminded.bootstrap.dao.*;
 import jakarta.persistence.*;
 import java.util.List;
-import ua.foxminded.bootstrap.model.Class;
+import ua.foxminded.bootstrap.model.UniversityClass;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;

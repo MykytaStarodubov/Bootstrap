@@ -1,16 +1,16 @@
 package ua.foxminded.bootstrap.service;
 
-import ua.foxminded.bootstrap.model.Class;
+import ua.foxminded.bootstrap.model.UniversityClass;
 import java.util.List;
 
 public interface ClassService {
-    Class findClassById(int id) throws ClassNotFoundException;
+    UniversityClass findClassById(int id) throws ClassNotFoundException;
 
-    List<Class> findAllClasses();
+    List<UniversityClass> findAllClasses();
 
-    void createClass(Class clazz);
+    void createClass(UniversityClass clazz);
 
-    void updateClass(Class clazz);
+    void updateClass(UniversityClass clazz);
 
     void deleteClassById(int id);
 }

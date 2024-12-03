@@ -6,7 +6,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ua.foxminded.bootstrap.dao.ClassRepository;
-import ua.foxminded.bootstrap.model.Class;
+import ua.foxminded.bootstrap.model.UniversityClass;
 import ua.foxminded.bootstrap.service.ClassServiceImpl;
 
 import java.util.Optional;
@@ -34,7 +34,7 @@ public class ClassServiceImplTest {
 	@Test
 	public void createClass_shouldSaveClass() {
 
-		Class newClass = new Class(3, "Chemistry");
+		UniversityClass newClass = new UniversityClass(3, "Chemistry");
 
 		classService.createClass(newClass);
 

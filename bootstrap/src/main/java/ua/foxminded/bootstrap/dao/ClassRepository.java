@@ -1,17 +1,17 @@
 package ua.foxminded.bootstrap.dao;
 
-import ua.foxminded.bootstrap.model.Class;
+import ua.foxminded.bootstrap.model.UniversityClass;
 import java.util.List;
 import java.util.Optional;
 
 public interface ClassRepository {
-    Optional<Class> findById(int id);
+    Optional<UniversityClass> findById(int id);
 
-    List<Class> findAll();
+    List<UniversityClass> findAll();
 
-    void create(Class claSS);
+    void create(UniversityClass claSS);
 
-    void update(Class claSS);
+    void update(UniversityClass claSS);
 
     void deleteById(int id);
 }
