@@ -52,12 +52,8 @@ public class ClassController {
 
     @GetMapping("/edit/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public String showEditForm(@PathVariable int id, Model model) throws java.lang.ClassNotFoundException {
-        UniversityClass clazz = classService.findClassById(id);
-        if (clazz == null) {
-            throw new UniversityClassNotFoundException("Class not found with ID: " + id);
-        }
-        model.addAttribute("class", clazz);
+    public String showEditForm(@PathVariable int id, Model model) throws ClassNotFoundException {
+        model.addAttribute("class", classService.findClassById(id));
         return "class_edit";
     }
 
