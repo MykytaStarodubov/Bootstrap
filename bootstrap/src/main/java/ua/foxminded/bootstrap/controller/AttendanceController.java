@@ -6,10 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
 @Controller
+@RequestMapping("/attendances")
 public class AttendanceController {
 
     private final AttendanceService attendanceService;
@@ -18,7 +20,6 @@ public class AttendanceController {
         this.attendanceService = attendanceService;
     }
 
-    @GetMapping("/attendances")
     public String listAttendances(Model model) {
         System.out.println("Method listAttendances called"); 
         List<Attendance> attendances = attendanceService.findAllAttendances();

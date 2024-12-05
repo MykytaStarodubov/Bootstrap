@@ -50,7 +50,7 @@ public class ClassController {
         return "redirect:/classes";
     }
 
-    @GetMapping("/edit/{id}")
+    @PutMapping("/edit/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public String showEditForm(@PathVariable int id, Model model) throws ClassNotFoundException {
         model.addAttribute("class", classService.findClassById(id));
