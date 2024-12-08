@@ -8,7 +8,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import ua.foxminded.bootstrap.dao.SubjectRepository;
 import ua.foxminded.bootstrap.exception.SubjectNotFoundException;
 import ua.foxminded.bootstrap.model.Subject;
-import ua.foxminded.bootstrap.service.SubjectServiceImpl;
+import ua.foxminded.bootstrap.service.impl.SubjectServiceImpl;
 
 import java.util.Optional;
 

@@ -8,7 +8,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import ua.foxminded.bootstrap.dao.TimetableRepository;
 import ua.foxminded.bootstrap.exception.TimetableNotFoundException;
 import ua.foxminded.bootstrap.model.Timetable;
-import ua.foxminded.bootstrap.service.TimetableServiceImpl;
+import ua.foxminded.bootstrap.service.impl.TimetableServiceImpl;
 
 import java.util.Optional;
 

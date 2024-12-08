@@ -8,7 +8,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import ua.foxminded.bootstrap.dao.UserRepository;
 import ua.foxminded.bootstrap.exception.UserNotFoundException;
 import ua.foxminded.bootstrap.model.User;
-import ua.foxminded.bootstrap.service.UserServiceImpl;
+import ua.foxminded.bootstrap.service.impl.UserServiceImpl;
 
 import java.util.Optional;
 

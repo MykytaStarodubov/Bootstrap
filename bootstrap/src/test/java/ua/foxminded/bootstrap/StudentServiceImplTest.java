@@ -3,7 +3,8 @@ package ua.foxminded.bootstrap;
 import ua.foxminded.bootstrap.dao.StudentRepository;
 import ua.foxminded.bootstrap.exception.StudentNotFoundException;
 import ua.foxminded.bootstrap.model.Student;
-import ua.foxminded.bootstrap.service.StudentServiceImpl;
+import ua.foxminded.bootstrap.service.impl.StudentServiceImpl;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

@@ -7,6 +7,7 @@ import org.mockito.MockitoAnnotations;
 import ua.foxminded.bootstrap.dao.AttendanceRepository;
 import ua.foxminded.bootstrap.model.Attendance;
 import ua.foxminded.bootstrap.service.*;
+import ua.foxminded.bootstrap.service.impl.AttendanceServiceImpl;
 
 import java.util.Arrays;
 import java.util.List;

@@ -8,7 +8,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import ua.foxminded.bootstrap.dao.RoleRepository;
 import ua.foxminded.bootstrap.exception.RoleNotFoundException;
 import ua.foxminded.bootstrap.model.Role;
-import ua.foxminded.bootstrap.service.RoleServiceImpl;
+import ua.foxminded.bootstrap.service.impl.RoleServiceImpl;
 
 import java.util.Arrays;
 import java.util.List;

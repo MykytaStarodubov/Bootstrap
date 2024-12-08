@@ -7,7 +7,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ua.foxminded.bootstrap.dao.ClassRepository;
 import ua.foxminded.bootstrap.model.UniversityClass;
-import ua.foxminded.bootstrap.service.ClassServiceImpl;
+import ua.foxminded.bootstrap.service.impl.ClassServiceImpl;
 
 import java.util.Optional;
 
