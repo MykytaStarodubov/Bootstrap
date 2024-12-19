@@ -31,6 +31,14 @@ public class Student {
 	@ManyToMany
 	@JoinTable(name = "student_class", joinColumns = @JoinColumn(name = "student_id"), inverseJoinColumns = @JoinColumn(name = "class_id"))
 	private List<UniversityClass> classes;
+	
+	public Student() {
+		
+	}
+	
+	public void setStudentId(int studentId) {
+		this.studentId = studentId;
+	}
 
 	public Student(int studentId, String studentName) {
 		this.studentId = studentId;

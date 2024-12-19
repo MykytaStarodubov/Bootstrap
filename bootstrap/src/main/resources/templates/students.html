@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
     <title>Students</title>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
@@ -9,25 +9,43 @@
         <h1>Students</h1>
         <table class="table table-striped">
             <thead>
-      
+                <tr>
+                </tr>
             </thead>
             <tbody>
                 <tr th:each="student : ${students}">
-                    <td th:text="${student.studentId}">1</td>
-                    <td th:text="${student.studentName}">John Student</td>
-                    <td th:text="${student.studentMobile}">1234567890</td>
-                    <td th:text="${student.studentEmail}">john.student@example.com</td>
-                    <td th:text="${student.studentAddress}">Student Lane</td>
-                    <td th:text="${student.studentUsername}">johnstudent</td>
-                    <td th:text="${student.studentPassword}">password</td>
-                    <td th:text="${student.studentCollegeId}">1</td>
+                    <td th:text="${student.studentId}"></td>
+                    <td th:text="${student.studentName}"></td>
+                    <td th:text="${student.studentMobile}"></td>
+                    <td th:text="${student.studentEmail}"></td>
+                    <td th:text="${student.studentAddress}"></td>
+                    <td th:text="${student.studentUsername}"></td>
+                    <td th:text="${student.studentPassword}"></td>
+                    <td th:text="${student.studentCollegeId}"></td>
+                </tr>
+                <tr th:if="${#lists.isEmpty(students)}">
+                    <td colspan="8">No students found</td>
                 </tr>
             </tbody>
         </table>
-		        <div>
-				   <a th:href="@{/welcome}" class="btn btn-secondary">Back to Welcome</a>
-				</div>
+
+        <div sec:authorize="hasRole('ADMIN')">
+            <a th:href="@{/students/create}" class="btn btn-primary">Add Student</a>
+        </div>
+
+        <div sec:authorize="hasRole('ADMIN')">
+            <a th:href="@{/students/delete/{id}}" class="btn btn-warning">Delete Student</a>
+        </div>
+
+        <div sec:authorize="hasRole('ADMIN')">
+            <a th:href="@{/students/edit/{id}}" class="btn btn-warning">Update Student</a>
+        </div>
+
+        <div>
+            <a th:href="@{/welcome}" class="btn btn-secondary">Back to Welcome</a>
+        </div>
     </div>
+
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 </body>
