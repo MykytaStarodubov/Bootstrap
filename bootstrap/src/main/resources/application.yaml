@@ -1,0 +1,27 @@
+spring:
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/console_app?currentSchema=student_db&TC_REUSABLE=true
+    username: postgres
+    password: 1234
+    hikari:
+      minimum-idle: 1
+      maximum-pool-size: 5
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    flyway:  
+      locations: classpath:db/migration
+      validateMigrationNaming: true
+
+  thymeleaf:
+    cache: false
+    enabled: true 
+    prefix: classpath:/templates/
+    suffix: .html
+
+application:
+  name: bootstrap

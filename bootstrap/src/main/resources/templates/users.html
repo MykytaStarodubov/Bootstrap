@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Users</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>Users</h1>
+        <table class="table table-striped">
+            <thead>
+            </thead>
+            <tbody>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.userId}">1</td>
+                    <td th:text="${user.username}">John Doe</td>
+                    <!-- When you're writing th:test="${user.userEmail} this field should be available in your User class
+                    otherwise you will have an error
+                    -->
+                    <td>john.doe@example.com</td>
+                    <td>2000-01-01</td>
+                    <td>123 Main St</td>
+                </tr>
+            </tbody>
+        </table>
+		        <div>
+				   <a th:href="@{/welcome}" class="btn btn-secondary">Back to Welcome</a>
+				</div>
+    </div>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

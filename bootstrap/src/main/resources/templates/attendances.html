@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Attendance</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>Attendance</h1>
+        <table class="table table-striped">
+            <thead>
+            </thead>
+			<tbody>
+			    <tr th:each="attendance : ${attendances}">
+			        <td th:text="${attendance.attendanceId}">1</td>
+			        <td th:text="${attendance.student.studentId}">1</td>
+			        <td th:text="${attendance.subject.subjectId}">1</td>
+			        <td th:text="${attendance.attendanceType}">Present</td>
+			        <td th:text="${attendance.attendanceDescription}">Attended Math Class</td>
+			    </tr>
+			</tbody>
+
+        </table>
+		
+		<div>
+             <a th:href="@{/welcome}" class="btn btn-secondary">Back to Welcome</a>
+		</div>
+    </div>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>
