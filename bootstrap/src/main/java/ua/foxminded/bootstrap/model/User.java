@@ -41,7 +41,8 @@ public class User {
     public int getUserId() {
         return userId;
     }
-
+    public User() {
+    }
     public void setUserId(int userId) {
         this.userId = userId;
     }

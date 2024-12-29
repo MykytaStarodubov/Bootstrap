@@ -13,16 +13,6 @@
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="student : ${students}">
-                    <td th:text="${student.studentId}"></td>
-                    <td th:text="${student.studentName}"></td>
-                    <td th:text="${student.studentMobile}"></td>
-                    <td th:text="${student.studentEmail}"></td>
-                    <td th:text="${student.studentAddress}"></td>
-                    <td th:text="${student.studentUsername}"></td>
-                    <td th:text="${student.studentPassword}"></td>
-                    <td th:text="${student.studentCollegeId}"></td>
-                </tr>
                 <tr th:if="${#lists.isEmpty(students)}">
                     <td colspan="8">No students found</td>
                 </tr>
