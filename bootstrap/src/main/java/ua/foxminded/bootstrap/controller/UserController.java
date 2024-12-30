@@ -1,6 +1,7 @@
 package ua.foxminded.bootstrap.controller;
 
 import ua.foxminded.bootstrap.model.User;
+
 import ua.foxminded.bootstrap.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -10,6 +11,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * UserController class handles requests and logic for all non-student user roles.
+ * <p>
+ * This includes roles such as teachers, parents, and any other users who wish 
+ * to register in the system.
+ * </p>
+ */
 @Controller
 @RequestMapping("/users")
 public class UserController {
