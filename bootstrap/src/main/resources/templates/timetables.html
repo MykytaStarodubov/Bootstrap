@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <title>Timetables</title>
+</head>
+<body>
+<h1>Timetables</h1>
+<table>
+    <thead>
+        <tr>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="timetable : ${timetables}">
+            <td th:text="${timetable.timetableId}"></td>
+            <td th:text="${timetable.timetableName}"></td>
+            <td th:text="${timetable.timetableDescription}"></td>
+            <td th:text="${timetable.timetableType}"></td>
+        </tr>
+		<tr th:if="${#lists.isEmpty(timetables)}">
+		                  <td colspan="6">No timetables found</td>
+		              </tr>
+    </tbody>
+</table>
+<div sec:authorize="hasRole('ADMIN')">
+           <a th:href="@{/timetables/create}" class="btn btn-primary">Add Timetables</a>
+       </div>
+	
+	       <div sec:authorize="hasRole('ADMIN')">
+			    <a th:href="@{/timetables/delete/{id}}" class="btn btn-warning">Delete Timetables</a>
+			</div>
+			
+				<div sec:authorize="hasRole('ADMIN')">
+				    <a th:href="@{/timetables/edit/{id}}" class="btn btn-warning">Update Timetables</a>
+				</div>
+				
+       <div>
+           <a th:href="@{/welcome}" class="btn btn-secondary">Back to Welcome</a>
+       </div>
+   </div>
+</body>
+</html>

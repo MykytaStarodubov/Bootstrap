@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <title>Create Timetable</title>
+</head>
+<body>
+    <h1>Create a New Timetable</h1>
+    <form th:action="@{/timetables/create}" th:object="${timetable}" method="post">
+        <div>
+            <label for="timetableName">Timetable Name:</label>
+            <input type="text" id="timetableName" th:field="*{timetableName}" required>
+        </div>
+        <div>
+            <label for="timetableType">Timetable Type:</label>
+            <input type="text" id="timetableType" th:field="*{timetableType}">
+        </div>
+        <div>
+            <label for="timetableDescription">Timetable Description:</label>
+            <input type="text" id="timetableDescription" th:field="*{timetableDescription}">
+        </div>
+        <div>
+            <label for="startTime">Start Time:</label>
+            <input type="time" id="startTime" th:field="*{startTime}">
+        </div>
+        <div>
+            <label for="endTime">End Time:</label>
+            <input type="time" id="endTime" th:field="*{endTime}">
+        </div>
+        <div>
+            <label for="dayOfWeek">Day of the Week:</label>
+            <select id="dayOfWeek" th:field="*{dayOfWeek}">
+                <option value="MONDAY">Monday</option>
+                <option value="TUESDAY">Tuesday</option>
+                <option value="WEDNESDAY">Wednesday</option>
+                <option value="THURSDAY">Thursday</option>
+                <option value="FRIDAY">Friday</option>
+                <option value="SATURDAY">Saturday</option>
+                <option value="SUNDAY">Sunday</option>
+            </select>
+        </div>
+        <div>
+            <button type="submit">Create</button>
+        </div>
+    </form>
+</body>
+</html>
