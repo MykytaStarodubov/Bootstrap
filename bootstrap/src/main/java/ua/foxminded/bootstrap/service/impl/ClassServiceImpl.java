@@ -1,0 +1,48 @@
+package ua.foxminded.bootstrap.service.impl;
+
+import ua.foxminded.bootstrap.dao.ClassRepository;
+import ua.foxminded.bootstrap.model.UniversityClass;
+import ua.foxminded.bootstrap.service.ClassService;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+@Service
+public class ClassServiceImpl implements ClassService {
+
+    private final ClassRepository classRepository;
+
+    public ClassServiceImpl(ClassRepository classRepository) {
+        this.classRepository = classRepository;
+    }
+
+    @Override
+    public UniversityClass findClassById(int id) throws ClassNotFoundException {
+        return classRepository.findById(id)
+                .orElseThrow(() -> new ClassNotFoundException("Class not found: " + id));
+    }
+
+    @Override
+    public List<UniversityClass> findAllClasses() {
+        return classRepository.findAll();
+    }
+
+    @Transactional
+    @Override
+    public void createClass(UniversityClass claSS) {
+        classRepository.create(claSS);
+    }
+
+    @Transactional
+    @Override
+    public void updateClass(UniversityClass claSS) {
+        classRepository.update(claSS);
+    }
+
+    @Transactional
+    @Override
+    public void deleteClassById(int id) {
+        classRepository.deleteById(id);
+    }
+}
