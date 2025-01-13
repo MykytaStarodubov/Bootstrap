@@ -16,9 +16,6 @@
                 <tr th:each="user : ${users}">
                     <td th:text="${user.userId}"></td>
                     <td th:text="${user.username}"></td>
-                    <td th:text="${user.userEmail}"></td>
-                    <td th:text="${user.dateOfBirth}"></td>
-                    <td th:text="${user.address}"></td>
                     <td>
                         <div class="btn-group" role="group">
                             <a th:href="@{'/users/edit/' + ${user.userId}}" class="btn btn-warning" sec:authorize="hasRole('ADMIN')">Edit</a>

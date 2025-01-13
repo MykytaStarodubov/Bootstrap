@@ -23,7 +23,7 @@ public class JPAClassDao implements ClassRepository {
 
     @Override
     public List<UniversityClass> findAll() {
-        return entityManager.createQuery("SELECT c FROM Class c", UniversityClass.class).getResultList();
+        return entityManager.createQuery("SELECT c FROM UniversityClass c", UniversityClass.class).getResultList();
     }
 
     @Transactional

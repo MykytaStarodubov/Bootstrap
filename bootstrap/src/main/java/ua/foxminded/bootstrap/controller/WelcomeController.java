@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/welcome")
 public class WelcomeController {
 
+	@GetMapping
 	public String welcome(Model model) {
 		model.addAttribute("title", "Welcome to the University Schedule Application");
 		return "welcome";

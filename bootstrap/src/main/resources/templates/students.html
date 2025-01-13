@@ -23,6 +23,7 @@
             <a th:href="@{/students/create}" class="btn btn-primary">Add Student</a>
         </div>
 
+        <!-- TODO something wrong here, not redirecting, shows 405 method not allowed -->
         <div sec:authorize="hasRole('ADMIN')">
             <a th:href="@{/students/delete/{id}}" class="btn btn-warning">Delete Student</a>
         </div>

@@ -25,12 +25,13 @@
         <div sec:authorize="hasRole('ADMIN')">
             <a th:href="@{/subjects/create}" class="btn btn-primary">Add Subject</a>
         </div>
-		
+
+        <!-- TODO NOT working -->
 		<div sec:authorize="hasRole('ADMIN')">
 		    <a th:href="@{/subjects//delete/{id}}" class="btn btn-warning">Delete Subject</a>
 		</div>
-		
-			<div sec:authorize="hasRole('ADMIN')">
+        <!-- TODO NOT working -->
+        <div sec:authorize="hasRole('ADMIN')">
 			    <a th:href="@{/subjects/edit/{id}}" class="btn btn-warning">Update Subject</a>
 			</div>
 			

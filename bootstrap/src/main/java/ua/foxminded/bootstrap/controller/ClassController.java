@@ -46,6 +46,8 @@ public class ClassController {
     @PostMapping("/create")
     @PreAuthorize("hasRole('ADMIN')")
     public String createClass(@ModelAttribute("class") UniversityClass clazz) {
+        // TODO:
+        // Issue while adding new class, field 'name' is mandatory, but you're not passing it from UI
         classService.createClass(clazz);
         return "redirect:/classes";
     }

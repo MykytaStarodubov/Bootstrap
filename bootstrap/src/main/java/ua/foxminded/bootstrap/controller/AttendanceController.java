@@ -20,6 +20,7 @@ public class AttendanceController {
         this.attendanceService = attendanceService;
     }
 
+    @GetMapping
     public String listAttendances(Model model) {
         System.out.println("Method listAttendances called"); 
         List<Attendance> attendances = attendanceService.findAllAttendances();
