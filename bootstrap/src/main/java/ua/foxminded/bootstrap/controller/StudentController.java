@@ -49,7 +49,7 @@ public class StudentController {
         model.addAttribute("student", student);
 
         //TODO no such html file
-        return "students_edit";
+        return "students";
     }
 
     @PostMapping("/edit/{id}")

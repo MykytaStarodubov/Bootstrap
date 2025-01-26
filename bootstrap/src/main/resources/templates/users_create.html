@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
     <title>Create User</title>
 </head>
@@ -14,12 +15,17 @@
             <label for="password">Password:</label>
             <input type="password" id="password" th:field="*{password}" required>
         </div>
-
-        <!--TODO: role cannot be null in USER model, please consider default value here -->
-        <!-- WHY using fields which not exists in model, like email, address, date of birth ? -->
         <div>
-            <input type="hidden" id="role" th:field="*{role}" th:value="'STUDENT'" required>
+            <label for="role">Role:</label>
+            <select id="role" th:field="*{role}" required>
+                <option th:each="role : ${T(ua.foxminded.bootstrap.model.enummodel.Role).values()}"
+                        th:value="${role}" 
+                        th:text="${role}" 
+                        th:selected="${role.name() == 'STUDENT'}">
+                </option>
+            </select>
         </div>
+
         <div>
             <button type="submit">Create</button>
         </div>

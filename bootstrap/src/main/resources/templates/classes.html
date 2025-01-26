@@ -30,14 +30,16 @@
         <div sec:authorize="hasRole('ADMIN')">
             <a th:href="@{/classes/create}" class="btn btn-primary">Add Class</a>
         </div>
-		<!-- TODO NOT working, I believe there is something general with your delete urls -->
-		       <div sec:authorize="hasRole('ADMIN')">
-				    <a th:href="@{/classes/delete/{id}}" class="btn btn-warning">Delete Subject</a>
-				</div>
-        <!-- TODO NOT working, I believe there is something general with your update urls -->
-        <div sec:authorize="hasRole('ADMIN')">
-					    <a th:href="@{/classes/edit/{id}}" class="btn btn-warning">Update Subject</a>
-					</div>
+	
+		<div sec:authorize="hasRole('ADMIN')">
+		    <a th:href="@{/classes/delete/{id}(id=${class.classId})}" class="btn btn-warning">Delete Class</a>
+		</div>
+
+	
+		<div sec:authorize="hasRole('ADMIN')">
+		    <a th:href="@{/classes/edit/{id}(id=${class.classId})}" class="btn btn-warning">Update Class</a>
+		</div>
+
 					
         <div>
             <a th:href="@{/welcome}" class="btn btn-secondary">Back to Welcome</a>

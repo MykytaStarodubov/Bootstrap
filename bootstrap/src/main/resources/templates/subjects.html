@@ -26,14 +26,14 @@
             <a th:href="@{/subjects/create}" class="btn btn-primary">Add Subject</a>
         </div>
 
-        <!-- TODO NOT working -->
 		<div sec:authorize="hasRole('ADMIN')">
-		    <a th:href="@{/subjects//delete/{id}}" class="btn btn-warning">Delete Subject</a>
+		    <a th:href="@{/subjects/delete/{id}(id=${subject.subjectId})}" 
+		       class="btn btn-warning"
+		       onclick="return confirm('Are you sure?');"> Delete Subject </a>
 		</div>
-        <!-- TODO NOT working -->
-        <div sec:authorize="hasRole('ADMIN')">
-			    <a th:href="@{/subjects/edit/{id}}" class="btn btn-warning">Update Subject</a>
-			</div>
+		<div sec:authorize="hasRole('ADMIN')">
+		    <a th:href="@{/subjects/edit/{id}(id=${subject.subjectId})}"  class="btn btn-warning"> Update Subject</a>
+		</div>
 			
 			<div>
 			<a th:href="@{/welcome}" class="btn btn-secondary">Back to Welcome</a>
