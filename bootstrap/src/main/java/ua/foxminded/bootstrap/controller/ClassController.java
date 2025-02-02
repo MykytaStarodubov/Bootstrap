@@ -46,26 +46,27 @@ public class ClassController {
     @PostMapping("/create")
     @PreAuthorize("hasRole('ADMIN')")
     public String createClass(@ModelAttribute("class") UniversityClass clazz) {
-        // TODO:
-        // Issue while adding new class, field 'name' is mandatory, but you're not passing it from UI
         classService.createClass(clazz);
         return "redirect:/classes";
     }
 
-    @PutMapping("/edit/{id}")
+    @GetMapping("/edit/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public String showEditForm(@PathVariable int id, Model model) throws ClassNotFoundException {
-        model.addAttribute("class", classService.findClassById(id));
-        return "class_edit";
+    public String showEditForm(@PathVariable int id, Model model) throws ClassNotFoundException{
+        UniversityClass universityClass = classService.findClassById(id);
+        model.addAttribute("class", universityClass);
+        return "class_create"; 
     }
+
 
     @PostMapping("/edit/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public String updateClass(@PathVariable int id, @ModelAttribute("class") UniversityClass clazz) {
-        clazz.setClassId(id);
-        classService.updateClass(clazz);
+    public String updateClass(@PathVariable int id, @ModelAttribute UniversityClass universityClass) {
+        universityClass.setClassId(id);
+        classService.updateClass(universityClass);
         return "redirect:/classes";
     }
+
 
     @PostMapping("/delete/{id}")
     @PreAuthorize("hasRole('ADMIN')")

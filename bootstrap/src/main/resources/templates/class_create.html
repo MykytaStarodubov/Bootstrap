@@ -5,30 +5,33 @@
 </head>
 <body>
     <h1>Create a New Class</h1>
-    <form th:action="@{/classes/create}" th:object="${class}" method="post">
-        <div>
-            <label for="name">Name:</label>
-            <input type="text" id="name" th:field="*{name}" required>
-        </div>
-        <div>
-            <label for="className">Class Name:</label>
-            <input type="text" id="className" th:field="*{className}" required>
-        </div>
-        <div>
-            <label for="classType">Class Type:</label>
-            <input type="text" id="classType" th:field="*{classType}">
-        </div>
-        <div>
-            <label for="classDescription">Class Description:</label>
-            <input type="text" id="classDescription" th:field="*{classDescription}">
-        </div>
-        <div>
-            <label for="classRoom">Room:</label>
-            <input type="text" id="classRoom" th:field="*{classRoom}">
-        </div>
-        <div>
-            <button type="submit">Create</button>
-        </div>
-    </form>
+	<form th:action="@{/classes/edit/{id}(id=${class.classId})}" th:object="${class}" method="post">
+	    <input type="hidden" th:field="*{classId}"> 
+	    
+	    <div>
+	        <label for="name">Name:</label>
+	        <input type="text" id="name" th:field="*{name}" required>
+	    </div>
+	    <div>
+	        <label for="className">Class Name:</label>
+	        <input type="text" id="className" th:field="*{className}" required>
+	    </div>
+	    <div>
+	        <label for="classType">Class Type:</label>
+	        <input type="text" id="classType" th:field="*{classType}">
+	    </div>
+	    <div>
+	        <label for="classDescription">Class Description:</label>
+	        <input type="text" id="classDescription" th:field="*{classDescription}">
+	    </div>
+	    <div>
+	        <label for="classRoom">Room:</label>
+	        <input type="text" id="classRoom" th:field="*{classRoom}">
+	    </div>
+	    
+	    <div>
+	        <button type="submit" th:text="${class.classId == null ? 'Create' : 'Update'}"></button>
+	    </div>
+	</form>
 </body>
 </html>

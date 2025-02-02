@@ -21,10 +21,19 @@
                 </tr>
                 <tr th:each="student : ${students}">
                     <td th:text="${student.studentId}"></td>
-                    <td th:text="${student.studentName}"></td>
+                    <td th:text="${student.studentName}" th:if="${student.studentId != selectedStudent?.studentId}"></td>
+                    
+                    <td th:if="${student.studentId == selectedStudent?.studentId}">
+                        <form th:action="@{/students/edit/{id}(id=${student.studentId})}" method="post">
+                            <input type="hidden" name="studentId" th:value="${student.studentId}">
+                            <input type="text" name="studentName" th:value="${student.studentName}" required>
+                            <button type="submit" class="btn btn-success">Save</button>
+                        </form>
+                    </td>
+
                     <td>
                         <div sec:authorize="hasRole('ADMIN')">
-                            <a th:href="@{/students/edit/{id}(id=${student.studentId})}" class="btn btn-warning">Update</a>
+                            <a th:href="@{/students(id=${student.studentId})}" class="btn btn-warning">Update</a>
                             <form th:action="@{/students/delete/{id}(id=${student.studentId})}" method="post" style="display:inline;">
                                 <button type="submit" class="btn btn-danger">Delete</button>
                             </form>

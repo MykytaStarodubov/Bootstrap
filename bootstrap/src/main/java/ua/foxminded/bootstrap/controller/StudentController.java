@@ -22,9 +22,15 @@ public class StudentController {
     }
 
     @GetMapping
-    public String listStudents(Model model) {
+    public String listStudents(@RequestParam(required = false) Integer id, Model model) {
         List<Student> students = studentService.findAllStudents();
         model.addAttribute("students", students);
+
+        if (id != null) {
+            Student selectedStudent = studentService.findStudentById(id);
+            model.addAttribute("selectedStudent", selectedStudent);
+        }
+
         return "students";
     }
 
@@ -48,7 +54,7 @@ public class StudentController {
         Student student = studentService.findStudentById(id);
         model.addAttribute("student", student);
 
-        //TODO no such html file
+    
         return "students";
     }
 

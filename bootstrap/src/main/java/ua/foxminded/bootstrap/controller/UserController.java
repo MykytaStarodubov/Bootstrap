@@ -55,8 +55,10 @@ public class UserController {
     public String showEditForm(@PathVariable Long id, Model model) { 
         User user = userService.findUserById(id); 
         model.addAttribute("user", user);
-        return "users_edit";
+        model.addAttribute("editMode", true); 
+        return "users_create";
     }
+
 
     @PostMapping("/edit/{id}")
     @PreAuthorize("hasRole('ADMIN')")
