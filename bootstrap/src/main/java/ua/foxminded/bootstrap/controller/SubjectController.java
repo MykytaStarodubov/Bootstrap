@@ -53,8 +53,10 @@ public class SubjectController {
     public String showEditForm(@PathVariable int id, Model model) {
         Subject subject = subjectService.findSubjectById(id);
         model.addAttribute("subject", subject);
-        return "subjects";
+        model.addAttribute("editMode", true);
+        return "subjects_create";
     }
+
 
     @PostMapping("/edit/{id}")
     @PreAuthorize("hasRole('ADMIN')")

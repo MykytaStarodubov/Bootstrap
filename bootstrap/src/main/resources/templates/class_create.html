@@ -1,37 +1,54 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Create Class</title>
+    <title th:text="${editMode} ? 'Edit Class' : 'Create a New Class'"></title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 </head>
 <body>
-    <h1>Create a New Class</h1>
-	<form th:action="@{/classes/edit/{id}(id=${class.classId})}" th:object="${class}" method="post">
-	    <input type="hidden" th:field="*{classId}"> 
-	    
-	    <div>
-	        <label for="name">Name:</label>
-	        <input type="text" id="name" th:field="*{name}" required>
-	    </div>
-	    <div>
-	        <label for="className">Class Name:</label>
-	        <input type="text" id="className" th:field="*{className}" required>
-	    </div>
-	    <div>
-	        <label for="classType">Class Type:</label>
-	        <input type="text" id="classType" th:field="*{classType}">
-	    </div>
-	    <div>
-	        <label for="classDescription">Class Description:</label>
-	        <input type="text" id="classDescription" th:field="*{classDescription}">
-	    </div>
-	    <div>
-	        <label for="classRoom">Room:</label>
-	        <input type="text" id="classRoom" th:field="*{classRoom}">
-	    </div>
-	    
-	    <div>
-	        <button type="submit" th:text="${class.classId == null ? 'Create' : 'Update'}"></button>
-	    </div>
-	</form>
+    <div class="container">
+        <h1 th:text="${editMode} ? 'Edit Class' : 'Create a New Class'"></h1>
+
+        <form th:action="${editMode} ? @{/classes/edit/{id}(id=${class.classId})} : @{/classes/create}" 
+              th:object="${class}" method="post">
+            
+            <input type="hidden" th:if="${editMode}" th:field="*{classId}" />
+            
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" th:field="*{name}" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="className">Class Name:</label>
+                <input type="text" id="className" th:field="*{className}" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="classType">Class Type:</label>
+                <input type="text" id="classType" th:field="*{classType}" class="form-control">
+            </div>
+            
+            <div class="form-group">
+                <label for="classDescription">Class Description:</label>
+                <input type="text" id="classDescription" th:field="*{classDescription}" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="classRoom">Room:</label>
+                <input type="text" id="classRoom" th:field="*{classRoom}" class="form-control">
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-primary" th:text="${editMode} ? 'Update' : 'Create'"></button>
+            </div>
+        </form>
+
+        <div class="mt-3">
+            <a th:href="@{/classes}" class="btn btn-secondary">Back to Classes</a>
+        </div>
+    </div>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 </body>
 </html>
