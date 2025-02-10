@@ -61,7 +61,7 @@ public class ClassController {
         return "redirect:/classes";
     }
 
-    @DeleteMapping("/delete/{id}")
+    @PostMapping("/delete/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public String deleteClass(@PathVariable int id) {
         classService.deleteClassById(id);

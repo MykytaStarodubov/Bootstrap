@@ -41,7 +41,7 @@ public class JPAClassDao implements ClassRepository {
     @Transactional
     @Override
     public void deleteById(int id) {
-        entityManager.createQuery("DELETE FROM Class c WHERE c.classId = :id")
+        entityManager.createQuery("DELETE FROM UniversityClass c WHERE c.classId = :id")
                      .setParameter("id", id)
                      .executeUpdate();
     }

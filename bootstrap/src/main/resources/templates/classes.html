@@ -21,7 +21,9 @@
                     <td th:text="${class.classStudentId?.id}"></td>
                     <td th:text="${class.classRoom}"></td>
                     <td sec:authorize="hasRole('ADMIN')">
-                        <a th:href="@{/classes/delete/{id}(id=${class.classId})}" class="btn btn-warning">Delete Class</a>
+                        <form th:action="@{/classes/delete/{id}(id=${class.classId})}" method="post" onsubmit="return confirm('Are you sure?');">
+                            <button type="submit" class="btn btn-warning">Delete Class</button>
+                        </form>
                     </td>
                     <td sec:authorize="hasRole('ADMIN')">
                         <a th:href="@{/classes/edit/{id}(id=${class.classId})}" class="btn btn-warning">Update Class</a>

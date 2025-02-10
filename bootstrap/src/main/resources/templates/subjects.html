@@ -16,9 +16,11 @@
             <td th:text="${subject.subjectName}"></td>
             <td th:text="${subject.subjectDescription}"></td>
             <td sec:authorize="hasRole('ADMIN')">
-                <a th:href="@{/subjects/delete/{id}(id=${subject.subjectId})}"
-                   class="btn btn-warning"
-                   onclick="return confirm('Are you sure?');"> Delete Subject </a>
+                <form th:action="@{/subjects/delete/{id}(id=${subject.subjectId})}" method="post"
+                      onsubmit="return confirm('Are you sure?');">
+                    <button type="submit" class="btn btn-warning">Delete Subject</button>
+                </form>
+
             </td>
             <td sec:authorize="hasRole('ADMIN')">
                 <a th:href="@{/subjects/edit/{id}(id=${subject.subjectId})}"  class="btn btn-warning"> Update Subject</a>

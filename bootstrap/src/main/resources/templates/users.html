@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1 th:text="${editMode} ? 'Edit User' : 'Create a New User'"></h1>
-    <form th:action="${editMode} ? @{/users/edit/{id}(id=${user.userId})} : @{/users/create}" 
+    <form th:action="${editMode} ? @{/users/edit/{id}(id=${user.userId})} : @{/users/create}"
           th:object="${user}" method="post">
         
         <input type="hidden" th:if="${editMode}" th:field="*{userId}" />
